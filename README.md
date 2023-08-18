@@ -6,7 +6,9 @@ AAC Honey Badger from Fallout 4 mod on TFA Base
 ## What's new?:
 * New animations
 * New skin
+* New sounds
 * More sights
+* 2 firemodes (instead 1)
 
 ## Requestments:
 * TFA Base

@@ -1,4 +1,4 @@
-![alt text](https://i.imgur.com/yadlKrc.png) 
+![alt text](https://i.imgur.com/0Yf7jlp.png) 
 
 # [TFA][AT][FO4] AAC Honey Badger v1.5
 AAC Honey Badger from Fallout 4 mod on TFA Base

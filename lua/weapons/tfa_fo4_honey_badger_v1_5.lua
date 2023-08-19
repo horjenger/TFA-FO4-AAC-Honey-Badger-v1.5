@@ -202,10 +202,14 @@ SWEP.Idle_Mode = TFA.Enum.IDLE_ANI
 
 
 SWEP.SequenceLengthOverride = {
-	["reload"] = 1.80,
-	["reload_empty"] = 2.5,
-	["reload_30"] = 3.056666841506958,
-	["reload_60"] = 3.5,
+	["reload"] = 1.9,
+	["reload_empty"] = 2.6,
+	["reload_30"] = 2.1,
+	["reload_empty_30"] = 2.7,
+	["reload_40"] = 2.5,
+	["reload_empty_40"] = 3.2,
+	["reload_60"] = 2.6,
+	["reload_empty_60"] = 3.2,
 }
 
 --MDL Animations Below
@@ -645,7 +649,7 @@ SWEP.EventTable = {
 		{time = 2.066666603088379, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerHitSlap")},
 		{time = 2.1000001430511475, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerBoltSlap")},
 		{time = 2.4000000953674316, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndGrab")},
-		{time = 2.7333333492279053, type = "sound", value = Sound("TFA_FO4_HB_V1.5.hkparam name")},
+		{time = 2.7333333492279053, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndShoulder")},
 	},
 	["reload_40"] = {
 		{time = 0, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2StartReload")},

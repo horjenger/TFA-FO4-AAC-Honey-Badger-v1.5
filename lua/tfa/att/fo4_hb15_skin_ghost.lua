@@ -4,7 +4,7 @@ end
 
 ATTACHMENT.Name = "Ghost skin"
 ATTACHMENT.ShortName = "GHST"
-ATTACHMENT.Icon = "entities/ghost.png"
+ATTACHMENT.Icon = "entities/fo4_hb_ghost.png"
 ATTACHMENT.Description = {}
 
 ATTACHMENT.WeaponTable = {

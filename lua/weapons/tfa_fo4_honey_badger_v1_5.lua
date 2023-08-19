@@ -40,7 +40,7 @@ SWEP.IronInSound = Sound("SHRIMP_CUSTOM.ADSIn") --Sound to play when ironsightin
 SWEP.IronOutSound = Sound("SHRIMP_CUSTOM.ADSOut") --Sound to play when ironsighting out?  nil for default
 --Bash
 SWEP.BashBase = true
-SWEP.Secondary.BashDamage = 30
+SWEP.Secondary.BashDamage = 20
 --Silencing
 SWEP.CanBeSilenced = false --Can we silence?  Requires animations.
 SWEP.Silenced = false --Silenced by default?

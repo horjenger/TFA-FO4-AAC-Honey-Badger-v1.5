@@ -86,7 +86,7 @@ SWEP.ProjectileEntity = nil --Entity to shoot
 SWEP.ProjectileVelocity = 0 --Entity to shoot's velocity
 SWEP.ProjectileModel = nil --Entity to shoot's model
 --[[VIEWMODEL]]--
-SWEP.ViewModel			= "models/weapons/fo4/c_fo4_honeybadger_v1_5.mdl" --Viewmodel path
+SWEP.ViewModel			= "models/weapons/fo4/c_fo4_honeybadger_v1.5.mdl" --Viewmodel path
 SWEP.ViewModelFOV			= 65		-- This controls how big the viewmodel looks.  Less is more.
 SWEP.ViewModelFlip			= false		-- Set this to true for CSS models, or false for everything else (with a righthanded viewmodel.)
 SWEP.SprintFOVOffset = 0
@@ -106,7 +106,7 @@ SWEP.Bodygroups_V = {
 }
 
 --[[WORLDMODEL]]--
-SWEP.WorldModel			= "models/weapons/fo4/w_fo4_honeybadger_v1_5.mdl" -- Weapon world model path
+SWEP.WorldModel			= "models/weapons/fo4/w_fo4_honeybadger_v1.5.mdl" -- Weapon world model path
 SWEP.Bodygroups_W = {
 	[0] = 1,
 	[1] = 1,
@@ -337,13 +337,13 @@ SWEP.SightOffset_Nil = Vector(0, 0, 0)
 SWEP.SightOffset_UH1 = SWEP.SightOffset_Nil + Vector(-0.01, -2.5, -0.38)
 
 SWEP.SightOffset_Nil = Vector(0, 0, 0)
-SWEP.SightOffset_COMPM4S = SWEP.SightOffset_Nil + Vector(-0.01, -2.5, -0.44)
+SWEP.SightOffset_ACRO = SWEP.SightOffset_Nil + Vector(0.03, -2.5, -0.015)
 
 SWEP.IronSightsPos_VORTEX_S       = Vector(-0.01, -4, -0.038)
 SWEP.IronSightsAng_VORTEX_S       = Vector(0, 0, 0)
 
 SWEP.Attachments = {
-	[1] = { atts = { "fo4_hb_holosun", "fo4_hb_aimpoint_riser", "fo4_hb_aimpoint", "fo4_hb_barska", "fo4_hb15_uh1", "fo4_hb15_compm4s", "fo4_hb_vortex_scope" } },
+	[1] = { atts = { "fo4_hb_holosun", "fo4_hb_aimpoint_riser", "fo4_hb_aimpoint", "fo4_hb_barska", "fo4_hb15_uh1", "fo4_hb15_acro", "fo4_hb_vortex_scope" } },
 	[2] = { atts = { "fo4_hb15_mag_30e", "fo4_hb15_mag_30", "fo4_hb15_mag_40", "fo4_hb15_mag_60" } },
 	[3] = { atts = { "fo4_hb_supp", "fo4_hb_supp_legion", "fo4_hb_supp_reinforce" } },
 //	[*] = { atts = { "am_match", "am_magnum", "am_gib", "tfa_mb_penrnd"} },
@@ -426,9 +426,9 @@ SWEP.VElements = {
 		draw_func_outer = FO4DrawSingleReticle(),
 		active = false
 	},
-	["sight_compm4s"] = {
+	["sight_acro"] = {
 		type = "Model",
-		model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_compm4s.mdl",
+		model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_acro.mdl",
 		bone = "Weapon",
 		rel = "",
 		pos = Vector(0, 0, 0),
@@ -442,11 +442,11 @@ SWEP.VElements = {
 		active = false,
 		bonemerge = true
 	},
-	["sight_compm4s_lens"] = {
+	["sight_acro_lens"] = {
 		type = "Quad",
-		rel = "sight_compm4s",
+		rel = "sight_acro",
 		bone = "A_RenderReticle",
-		pos = Vector(0, -5, 0),
+		pos = Vector(0, -3, 0),
 		angle = Angle(0, 0, 90),
 		size = 0.33,
 		draw_func_outer = FO4DrawSingleReticle(),
@@ -498,7 +498,7 @@ SWEP.VElements = {
 		type = "Quad",
 		rel = "sight_aimpoint_riser",
 		bone = "A_RenderReticle",
-		pos = Vector(0, -5, 0),
+		pos = Vector(0, -3, 0),
 		angle = Angle(0, 0, 90),
 		size = 0.3,
 		draw_func_outer = FO4DrawSingleReticle(),
@@ -524,7 +524,7 @@ SWEP.VElements = {
 		type = "Quad",
 		rel = "sight_aimpoint",
 		bone = "A_RenderReticle",
-		pos = Vector(0, -5, 0),
+		pos = Vector(0, -3, 0),
 		angle = Angle(0, 0, 90),
 		size = 0.3,
 		draw_func_outer = FO4DrawSingleReticle(),
@@ -560,14 +560,14 @@ SWEP.VElements = {
 	["laser"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_laser.mdl", bone = "SharedAttach", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },
 	["scope_vortex"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_vortex_rt.mdl", bone = "Weapon", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },
 	["laser_beam"] = { type = "Model", model = "models/tfa/lbeam.mdl", bone = "LaserSightBeam", rel = "laser", pos = Vector(0, 0, 0), angle = Angle(0, 90, 0), size = Vector(0.9, 0.6, 0.6), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = false, active = false },
-	["knife"] = { type = "Model", model = "models/weapons/fo4_shared/c_knife.mdl", bone = "AnimObjectR1", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = true },
+//	["knife"] = { type = "Model", model = "models/weapons/fo4_shared/c_knife.mdl", bone = "AnimObjectR1", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = true },
 }
 
 SWEP.WElements = {
 	["scope_vortex"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_vortex_rt.mdl", bone = "Weapon", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },
 	["sight_barska"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_barska.mdl", bone = "Weapon", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },	
 	["sight_uh1"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_uh1.mdl", bone = "Weapon", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },	
-	["sight_compm4s"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_compm4s.mdl", bone = "Weapon", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },	
+	["sight_acro"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_acro.mdl", bone = "Weapon", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },	
 	["sight_aimpoint_riser"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_aimpoint_riser.mdl", bone = "Weapon", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },
 	["sight_aimpoint"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_aimpoint.mdl", bone = "Weapon", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },
 	["sight_holosun"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_holosun.mdl", bone = "Weapon", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },

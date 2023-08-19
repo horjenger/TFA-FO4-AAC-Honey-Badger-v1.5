@@ -5,7 +5,7 @@
 	"$phongexponenttexture" "models/shrimp/fo4/honey_badger/UH1/Sight_UH-1_S"
 	"$phong"		"1"
 	"$blendtintbybasealpha" "1"
-	"$phongboost"	"15"
+	"$phongboost"	"17"
 	"$phongalbedotint"		"1"
 	"$phongfresnelranges"	"[0.7 0.8 1]"
 	"$rimlight"	"1"

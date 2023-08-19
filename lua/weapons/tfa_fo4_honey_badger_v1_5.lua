@@ -86,7 +86,7 @@ SWEP.ProjectileEntity = nil --Entity to shoot
 SWEP.ProjectileVelocity = 0 --Entity to shoot's velocity
 SWEP.ProjectileModel = nil --Entity to shoot's model
 --[[VIEWMODEL]]--
-SWEP.ViewModel			= "models/weapons/fo4/c_fo4_honeybadger_v1.5.mdl" --Viewmodel path
+SWEP.ViewModel			= "models/weapons/fo4/c_fo4_honeybadger_v1_5.mdl" --Viewmodel path
 SWEP.ViewModelFOV			= 65		-- This controls how big the viewmodel looks.  Less is more.
 SWEP.ViewModelFlip			= false		-- Set this to true for CSS models, or false for everything else (with a righthanded viewmodel.)
 SWEP.SprintFOVOffset = 0
@@ -106,7 +106,7 @@ SWEP.Bodygroups_V = {
 }
 
 --[[WORLDMODEL]]--
-SWEP.WorldModel			= "models/weapons/fo4/w_fo4_honeybadger_v1.5.mdl" -- Weapon world model path
+SWEP.WorldModel			= "models/weapons/fo4/w_fo4_honeybadger_v1_5.mdl" -- Weapon world model path
 SWEP.Bodygroups_W = {
 	[0] = 1,
 	[1] = 1,

@@ -14,7 +14,6 @@ AAC Honey Badger from Fallout 4 mod on TFA Base
 ## Requestments:
 * TFA Base
 * [TFA FO4 Base](https://github.com/horjenger/TFA-FO4-Base)
-* [TFA FO4 Honey Badger](https://github.com/horjenger/TFA-FO4-AAC-Honey-Badger-V1.0)
 * TFA Insurgency: Shared Parts
 
 ## Notes:

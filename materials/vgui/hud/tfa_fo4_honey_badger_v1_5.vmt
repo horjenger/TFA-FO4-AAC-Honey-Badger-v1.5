@@ -1,6 +1,6 @@
 "UnlitGeneric"
 {
-	"$basetexture" "vgui/hud/tfa_fo4_honey_badger"
+	"$basetexture" "vgui/hud/tfa_fo4_honey_badger_v1_5"
 	$translucent "1"
 	$nocull "1"
 	$ignorez "1"

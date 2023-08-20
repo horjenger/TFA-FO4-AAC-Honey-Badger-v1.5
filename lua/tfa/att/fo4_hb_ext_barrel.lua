@@ -8,7 +8,7 @@ ATTACHMENT.Description = {
 	TFA.AttachmentColors["+"], "40% less spread",
 	TFA.AttachmentColors["-"], "Increases weight of the weapon",
 }
-ATTACHMENT.Icon = "entities/tfa_qmark.png" --Revers to label, please give it an icon though!  This should be the path to a png, like "entities/tfa_ammo_match.png"
+ATTACHMENT.Icon = "entities/fo4_hb_ext_barrel.png" --Revers to label, please give it an icon though!  This should be the path to a png, like "entities/tfa_ammo_match.png"
 ATTACHMENT.ShortName = "EBR"
 
 ATTACHMENT.WeaponTable = {

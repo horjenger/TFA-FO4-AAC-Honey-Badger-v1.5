@@ -1,0 +1,25 @@
+"VertexLitGeneric"
+{
+	"$basetexture" "models/shrimp/fo4/honey_badger/Mag/Mag_PMAG_60RND_D"
+	"$bumpmap" "models/shrimp/fo4/honey_badger/Mag/Mag_PMAG_60RND_N"
+	"$phongexponenttexture" "models/shrimp/fo4/honey_badger/Mag/Mag_PMAG_60RND_S"
+	"$phong"		"1"
+	"$blendtintbybasealpha" "1"
+	"$phongboost"	"10"
+	"$phongalbedotint"		"1"
+	"$phongfresnelranges"	"[0.65 0.7 1]"
+	"$rimlight"	"1"
+	"$rimlightexponent"		"25"
+	"$rimmask"	"1"
+	"$rimlightboost"	"0.5"
+	"$envmap"	"env_cubemap"
+	"$envmaptint"	"[ 0.07 0.07 0.07]"
+}
+
+
+
+
+
+
+
+

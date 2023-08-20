@@ -345,9 +345,9 @@ SWEP.IronSightsAng_VORTEX_S       = Vector(0, 0, 0)
 SWEP.Attachments = {
 	[1] = { atts = { "fo4_hb_holosun", "fo4_hb_aimpoint_riser", "fo4_hb_aimpoint", "fo4_hb_barska", "fo4_hb15_uh1", "fo4_hb15_acro", "fo4_hb_vortex_scope" } },
 	[2] = { atts = { "fo4_hb15_mag_30e", "fo4_hb15_mag_30", "fo4_hb15_mag_40", "fo4_hb15_mag_60" } },
-	[3] = { atts = { "fo4_hb_supp", "fo4_hb_supp_legion", "fo4_hb_supp_reinforce" } },
+	[3] = { atts = { "fo4_hb_laser", "fo4_hb_laser_ncstar", "fo4_hb_flashlight", "fo4_hb_flashlight_sf_sow" } },
+	[4] = { atts = { "fo4_hb_supp", "fo4_hb_supp_legion", "fo4_hb_supp_reinforce" } },
 //	[*] = { atts = { "am_match", "am_magnum", "am_gib", "tfa_mb_penrnd"} },
-	[4] = { atts = { "fo4_hb_laser", "fo4_hb_flashlight"} },
 	[5] = { atts = { "fo4_hb_fortis_ch", "fo4_hb_fortis_nitride" } },
 	[6] = { atts = { "fo4_hb_skin_spec_ops", "fo4_hb15_skin_ghost" } },
 	[7] = { atts = { "fo4_hb_ext_barrel" } },
@@ -556,10 +556,13 @@ SWEP.VElements = {
 		draw_func_outer = FO4DrawSingleReticle(),
 		active = false
 	},
-	["flashlight"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_flashlight.mdl", bone = "SharedAttach", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },
+	["flashlight_2"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_surefire_sow.mdl", bone = "SharedAttach", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },
+	["laser_2"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_laser_ncstar.mdl", bone = "SharedAttach", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },
+	["flashlight"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_flashlight_surefire.mdl", bone = "SharedAttach", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },
 	["laser"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_laser.mdl", bone = "SharedAttach", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },
 	["scope_vortex"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_vortex_rt.mdl", bone = "Weapon", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },
 	["laser_beam"] = { type = "Model", model = "models/tfa/lbeam.mdl", bone = "LaserSightBeam", rel = "laser", pos = Vector(0, 0, 0), angle = Angle(0, 90, 0), size = Vector(0.9, 0.6, 0.6), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = false, active = false },
+	["laser_beam_2"] = { type = "Model", model = "models/tfa/lbeam.mdl", bone = "LaserSightBeam", rel = "laser_2", pos = Vector(0, 0, 0), angle = Angle(0, 90, 0), size = Vector(0.9, 0.6, 0.6), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = false, active = false },	
 //	["knife"] = { type = "Model", model = "models/weapons/fo4_shared/c_knife.mdl", bone = "AnimObjectR1", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = true },
 }
 
@@ -571,8 +574,10 @@ SWEP.WElements = {
 	["sight_aimpoint_riser"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_aimpoint_riser.mdl", bone = "Weapon", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },
 	["sight_aimpoint"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_aimpoint.mdl", bone = "Weapon", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },
 	["sight_holosun"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_holosun.mdl", bone = "Weapon", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },
-	["flashlight"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_flashlight.mdl", bone = "SharedAttach", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },
+	["flashlight"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_flashlight_surefire.mdl", bone = "SharedAttach", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },
 	["laser"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_laser.mdl", bone = "SharedAttach", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },
+	["flashlight_2"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_surefire_sow.mdl", bone = "SharedAttach", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },
+	["laser_2"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_laser_ncstar.mdl", bone = "SharedAttach", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },
 }
 SWEP.MuzzleAttachmentSilenced = 2
 SWEP.LaserSightModAttachment = 1

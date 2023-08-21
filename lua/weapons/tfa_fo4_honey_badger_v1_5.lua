@@ -359,6 +359,7 @@ SWEP.Attachments = {
 SWEP.AttachmentExclusions   = {
 	["fo4_hb_fortis_ch"] = { "fo4_hb_supp", "fo4_hb_supp_legion", "fo4_hb_supp_reinforce" },
 	["fo4_hb_fortis_nitride"] = { "fo4_hb_supp", "fo4_hb_supp_legion", "fo4_hb_supp_reinforce" },
+	["fo4_hb_aimpoint"] = { "fo4_hb_flashlight_sf_sow" },
 }
 
 SWEP.ViewModelBoneMods = {

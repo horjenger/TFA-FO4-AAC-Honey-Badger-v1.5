@@ -11,10 +11,10 @@ ATTACHMENT.Description = {
 
 ATTACHMENT.WeaponTable = {
         ["Bodygroups_V"] = {
-        [3] =  2,
+        [3] =  0,
     },
         ["Bodygroups_W"] = {
-        [2] =  2,
+        [2] =  0,
     },
 	["VElements"] = {
 		["sight_aimpoint"] = {

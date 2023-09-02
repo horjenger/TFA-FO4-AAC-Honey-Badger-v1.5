@@ -350,7 +350,6 @@ SWEP.Attachments = {
 	[2] = { atts = { "fo4_hb15_mag_30e", "fo4_hb15_mag_30", "fo4_hb15_mag_40", "fo4_hb15_mag_60" } },
 	[3] = { atts = { "fo4_hb_laser", "fo4_hb_laser_ncstar", "fo4_hb_flashlight", "fo4_hb_flashlight_sf_sow" } },
 	[4] = { atts = { "fo4_hb_supp", "fo4_hb_supp_legion", "fo4_hb_supp_reinforce" } },
-//	[*] = { atts = { "am_match", "am_magnum", "am_gib", "tfa_mb_penrnd"} },
 	[5] = { atts = { "fo4_hb_fortis_ch", "fo4_hb_fortis_nitride" } },
 	[6] = { atts = { "fo4_hb_skin_spec_ops", "fo4_hb15_skin_ghost" } },
 	[7] = { atts = { "fo4_hb_ext_barrel" } },
@@ -568,7 +567,6 @@ SWEP.VElements = {
 	["scope_specter"] = { type = "Model", model = "models/weapons/fo4/upgrades/c_fo4_honeybadger_specterdr.mdl", bone = "Weapon", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = false },
 	["laser_beam"] = { type = "Model", model = "models/tfa/lbeam.mdl", bone = "LaserSightBeam", rel = "laser", pos = Vector(0, 0, 0), angle = Angle(0, 90, 0), size = Vector(0.9, 0.6, 0.6), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = false, active = false },
 	["laser_beam_2"] = { type = "Model", model = "models/tfa/lbeam.mdl", bone = "LaserSightBeam", rel = "laser_2", pos = Vector(0, 0, 0), angle = Angle(0, 90, 0), size = Vector(0.9, 0.6, 0.6), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = false, active = false },	
-//	["knife"] = { type = "Model", model = "models/weapons/fo4_shared/c_knife.mdl", bone = "AnimObjectR1", rel = "", pos = Vector(0, 0, 0), angle = Angle(0, 0, 0), size = Vector(1, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "", skin = 0, bodygroup = {}, bonemerge = true, active = true },
 }
 
 SWEP.WElements = {
@@ -597,8 +595,30 @@ SWEP.RTAttachment_SPECTER             = 1
 SWEP.ScopeDistanceRange_SPECTER        = 60
 SWEP.ScopeDistanceMin_SPECTER         = 30
 
+SWEP.MagImpactSounds = {
+	"shrimp/fo4/honey_badger/v1_5/Foley/MagImpact.wav",
+}
 
-DEFINE_BASECLASS( SWEP.Base )
+SWEP.MagModel = "models/weapons/fo4/misc/w_hb_mag_default.mdl"
+SWEP.MagSkin = 0
+SWEP.MagBodygroups = "0"
+SWEP.MagDropSrcForward = 4
+SWEP.MagDropSrcRight = 0
+SWEP.MagDropSrcUp = -8
+SWEP.MagDropAng = Angle(0, 0, 0)
+SWEP.MagYeetVelocityForward = 25
+SWEP.MagYeetVelocityRight = 0
+SWEP.MagYeetVelocityUp = 0
+SWEP.MagAngleVelocity = Vector(math.random(-50, 50), -200, math.random(-50, 50))
+SWEP.MagRemovalTimer = 60
+
+function SWEP:Mag_Empty(vm)
+	self.MagBodygroups = "1"
+end
+
+function SWEP:Mag_Full(vm)
+	self.MagBodygroups = "0"
+end
 
 SWEP.EventTable = {
 	["equip"] = {
@@ -621,17 +641,21 @@ SWEP.EventTable = {
 		{time = 1.2166666984558105, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerEndReload")}
 	},
 	["reload"] = {
+		{time = 0, type = "lua", value = function(wep, vm) wep:Mag_Full() end},
 		{time = 0, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2StartReload")},
 		{time = 0.23333333432674408, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagRelease20")},
 		{time = 0.3333333432674408, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagOut20")},
+		{time = 0.4333333432674408, type = "lua", value = function(wep, vm) wep:TFAMagDrop() end},
 		{time = 0.9333333373069763, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagInserting20")},
 		{time = 1.2333333492279053, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagIn20")},
 		{time = 1.600000023841858, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndGrab")},
 		{time = 1.9000000953674316, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndShoulder")},
 	},
 	["reload_empty"] = {
+		{time = 0, type = "lua", value = function(wep, vm) wep:Mag_Empty() end},
 		{time = 0, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2StartReload")},
 		{time = 0.20000000298023224, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagOut")},
+		{time = 0.30000000298023224, type = "lua", value = function(wep, vm) wep:TFAMagDrop() end},
 		{time = 0.7333333492279053, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgMagGrab")},
 		{time = 1.0666667222976685, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagPush")},
 		{time = 1.3333333730697632, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagLock")},
@@ -641,10 +665,11 @@ SWEP.EventTable = {
 		{time = 2.633333444595337, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndShoulder")},
 	},
 	["reload_30"] = {
+		{time = 0, type = "lua", value = function(wep, vm) wep:Mag_Full() end},
 		{time = 0, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2StartReload")},
 		{time = 0.2666666805744171, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagOut")},
+		{time = 0.3666666805744171, type = "lua", value = function(wep, vm) wep:TFAMagDrop() end},
 		{time = 0.28333333134651184, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagGrab")},
-		{time = 0.8166666626930237, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagImpact")},
 		{time = 0.9333333373069763, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2Adjust")},
 		{time = 0.9833333492279053, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagTouch")},
 		{time = 1.2000000476837158, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagPush")},
@@ -655,8 +680,10 @@ SWEP.EventTable = {
 		
 	},
 	["reload_empty_30"] = {
+		{time = 0, type = "lua", value = function(wep, vm) wep:Mag_Empty() end},
 		{time = 0, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2StartReload")},
 		{time = 0.20000000298023224, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagOut")},
+		{time = 0.30000000298023224, type = "lua", value = function(wep, vm) wep:TFAMagDrop() end},
 		{time = 0.5666666626930237, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagGrab")},
 		{time = 1.0333333015441895, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagTouch")},
 		{time = 1.3333333730697632, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagPush")},
@@ -667,10 +694,11 @@ SWEP.EventTable = {
 		{time = 2.7333333492279053, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndShoulder")},
 	},
 	["reload_40"] = {
+		{time = 0, type = "lua", value = function(wep, vm) wep:Mag_Full() end},
 		{time = 0, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2StartReload")},
 		{time = 0.20000000298023224, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagRelease40")},
 		{time = 0.30000001192092896, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagOut40")},
-		{time = 0.8166666626930237, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagImpact")},
+		{time = 0.40000001192092896, type = "lua", value = function(wep, vm) wep:TFAMagDrop() end},
 		{time = 0.9333333373069763, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2Adjust")},
 		{time = 0.9500000476837158, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagTouch40")},
 		{time = 1.5166666507720947, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagInserting40")},
@@ -681,8 +709,10 @@ SWEP.EventTable = {
 		
 	},
 	["reload_empty_40"] = {
+		{time = 0, type = "lua", value = function(wep, vm) wep:Mag_Empty() end},
 		{time = 0, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2StartReload")},
 		{time = 0.20000000298023224, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagOut")},
+		{time = 0.30000000298023224, type = "lua", value = function(wep, vm) wep:TFAMagDrop() end},
 		{time = 0.6333333253860474, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagGrab")},
 		{time = 1.0666667222976685, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagTouch")},
 		{time = 1.3666666746139526, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2Adjust")},
@@ -695,9 +725,11 @@ SWEP.EventTable = {
 		{time = 3.2333333492279053, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndShoulder")},
 	},
 	["reload_60"] = {
+		{time = 0, type = "lua", value = function(wep, vm) wep:Mag_Full() end},
 		{time = 0, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2StartReload")},
 		{time = 0.18333333730697632, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagRelease60P")},
 		{time = 0.30000001192092896, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagOut60P")},
+		{time = 0.40000001192092896, type = "lua", value = function(wep, vm) wep:TFAMagDrop() end},
 		{time = 0.6000000238418579, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagGrab")},
 		{time = 1.0333333015441895, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagTouch60P")},
 		{time = 1.3666666746139526, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2Adjust")},
@@ -709,8 +741,10 @@ SWEP.EventTable = {
 		
 	},
 	["reload_empty_60"] = {
+		{time = 0, type = "lua", value = function(wep, vm) wep:Mag_Empty() end},
 		{time = 0, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2StartReload")},
 		{time = 0.20000000298023224, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagOut")},
+		{time = 0.30000001192092896, type = "lua", value = function(wep, vm) wep:TFAMagDrop() end},
 		{time = 0.6333333253860474, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagGrab")},
 		{time = 1.0666667222976685, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagTouch")},
 		{time = 1.3666666746139526, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2Adjust")},
@@ -723,3 +757,5 @@ SWEP.EventTable = {
 		{time = 3.2333333492279053, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndShoulder")},
 	},
 }
+
+DEFINE_BASECLASS( SWEP.Base )

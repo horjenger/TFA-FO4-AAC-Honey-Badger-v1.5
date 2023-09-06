@@ -25,7 +25,7 @@ SWEP.Primary.Sound = Sound("TFA_FO4_HB_V1.5.Fire") -- This is the sound of the w
 SWEP.Primary.SilencedSound = Sound("TFA_FO4_HB_V1.5.Silenced") -- This is the sound of the weapon, when silenced.
 SWEP.Primary.LoopSoundAutoOnly = true
 SWEP.Primary.PenetrationMultiplier = 1 --Change the amount of something this gun can penetrate through
-SWEP.Primary.Damage = 15 -- Damage, in standard damage points.
+SWEP.Primary.Damage = 30 -- Damage, in standard damage points.
 SWEP.Primary.DamageTypeHandled = true --true will handle damagetype in base
 SWEP.Primary.DamageType = DMG_BULLET --See DMG enum.  This might be DMG_SHOCK, DMG_BURN, DMG_BULLET, etc.  Leave nil to autodetect.  DMG_AIRBOAT opens doors.
 SWEP.Primary.Force = nil --Force value, leave nil to autocalc
@@ -353,6 +353,7 @@ SWEP.Attachments = {
 	[5] = { atts = { "fo4_hb_fortis_ch", "fo4_hb_fortis_nitride" } },
 	[6] = { atts = { "fo4_hb_skin_spec_ops", "fo4_hb15_skin_ghost" } },
 	[7] = { atts = { "fo4_hb_ext_barrel" } },
+	[8] = { atts = { "fo4_hb_grip" } },
 }
 
 SWEP.AttachmentExclusions   = {
@@ -755,6 +756,52 @@ SWEP.EventTable = {
 		{time = 2.6000001430511475, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerBoltSlap")},
 		{time = 2.9000000953674316, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndGrab")},
 		{time = 3.2333333492279053, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndShoulder")},
+	},
+	
+--Grip Stuff
+
+	["reload_grip"] = {
+		{time = 0, type = "lua", value = function(wep, vm) wep:Mag_Full() end},
+		{time = 0, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2StartReload")},
+		{time = 0.23333333432674408, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagRelease20")},
+		{time = 0.3333333432674408, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagOut20")},
+		{time = 0.4333333432674408, type = "lua", value = function(wep, vm) wep:TFAMagDrop() end},
+		{time = 0.9333333373069763, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagInserting20")},
+		{time = 1.2333333492279053, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagIn20")},
+		{time = 1.600000023841858, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndGrab")},
+		{time = 1.9000000953674316, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndShoulder")},
+	},
+	["reload_empty_grip"] = {
+		{time = 0, type = "lua", value = function(wep, vm) wep:Mag_Empty() end},
+		{time = 0, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2StartReload")},
+		{time = 0.20000000298023224, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagOut")},
+		{time = 0.30000000298023224, type = "lua", value = function(wep, vm) wep:TFAMagDrop() end},
+		{time = 0.7333333492279053, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgMagGrab")},
+		{time = 1.0666667222976685, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagPush")},
+		{time = 1.3333333730697632, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagLock")},
+		{time = 1.9666666984558105, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerHitSlap")},
+		{time = 2.0, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerBoltSlap")},
+		{time = 2.299999952316284, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndGrab")},
+		{time = 2.633333444595337, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndShoulder")},
+	},
+	["equip_grip"] = {
+		{time = 0.0, type = "sound", value = Sound("TFA_FO4_HB.StartReload")},
+		{time = 0.1333333432674408, type = "sound", value = Sound("TFA_FO4_HB.StockClose")},
+		{time = 0.7166666984558105, type = "sound", value = Sound("TFA_FO4_HB.MagGrab")},
+		{time = 0.9333333373069763, type = "sound", value = Sound("TFA_FO4_HB.BoltBack")},
+		{time = 1.1666667461395264, type = "sound", value = Sound("TFA_FO4_HB.BoltForward")},
+		{time = 1.350000023841858, type = "sound", value = Sound("TFA_FO4_HB.EndReload")}
+	},
+	["inspect_grip"] = {
+		{time = 0.10000000149011612, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerLift")},
+		{time = 1.8000000715255737, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerInspection")},
+		{time = 3.3000001907348633, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerReloadEnd")},	
+	},
+	["unequip_grip"] = {
+		{time = 0.01666666753590107, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerStartReload")},
+		{time = 0.5833333730697632, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagGrab")},
+		{time = 0.7333333373069763, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerStockFold")},
+		{time = 1.2166666984558105, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerEndReload")}
 	},
 }
 

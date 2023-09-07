@@ -210,6 +210,14 @@ SWEP.SequenceLengthOverride = {
 	["reload_empty_40"] = 3.2,
 	["reload_60"] = 2.6,
 	["reload_empty_60"] = 3.2,
+	["reload_grip"] = 1.9,
+	["reload_empty_grip"] = 2.6,
+	["reload_30_grip"] = 2.1,
+	["reload_empty_30_grip"] = 2.7,
+	["reload_40_grip"] = 2.5,
+	["reload_empty_40_grip"] = 3.2,
+	["reload_60_grip"] = 2.6,
+	["reload_empty_60_grip"] = 3.2,
 }
 
 --MDL Animations Below

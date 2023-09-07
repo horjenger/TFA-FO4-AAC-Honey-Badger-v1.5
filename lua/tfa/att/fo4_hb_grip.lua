@@ -2,13 +2,19 @@ if not ATTACHMENT then
 	ATTACHMENT = {}
 end
 
-ATTACHMENT.Name = "Grip test"
+ATTACHMENT.Name = "Vertical grip"
 --ATTACHMENT.ID = "base" -- normally this is just your filename
-ATTACHMENT.Description = { TFA.AttachmentColors["+"], "60% less vertical recoil", "20% less horizontal recoil", TFA.AttachmentColors["-"], "10% lower base accuracy", "5% lower scoped accuracy", "Marginally slower movespeed" }
-ATTACHMENT.Icon = "entities/tfa_qmark.png" --Revers to label, please give it an icon though!  This should be the path to a png, like "entities/tfa_ammo_match.png"
+ATTACHMENT.Description = { TFA.AttachmentColors["+"], "60% less vertical recoil", "20% less horizontal recoil" }
+ATTACHMENT.Icon = "entities/tfa_fo4_hb_vertical_grip.png" --Revers to label, please give it an icon though!  This should be the path to a png, like "entities/tfa_ammo_match.png"
 ATTACHMENT.ShortName = "GRIP"
 
 ATTACHMENT.WeaponTable = {
+        ["Bodygroups_V"] = {
+		[8] =  1
+    },
+        ["Bodygroups_W"] = {
+		[7] =  1
+    },
 	["Animations"] = {
 		["idle"] = {
 			["type"] = TFA.Enum.ANIMATION_SEQ, --Sequence or act
@@ -26,14 +32,35 @@ ATTACHMENT.WeaponTable = {
 			["type"] = TFA.Enum.ANIMATION_SEQ, --Sequence or act
 			["value"] = "unequip_grip"
 		},
-		["reload"] = {
-			["type"] = TFA.Enum.ANIMATION_SEQ, --Sequence or act
-			["value"] = "reload_grip"
-		},
-		["reload_empty"] = {
-			["type"] = TFA.Enum.ANIMATION_SEQ, --Sequence or act
-			["value"] = "reload_empty_grip"
-		},
+		["reload"] = function(wep,val)
+			val = table.Copy(val)
+			val["type"] = TFA.Enum.ANIMATION_SEQ --Sequence or act
+			if wep:GetStat("MAG30") then
+				val["value"] = "reload_30_grip"
+			elseif wep:GetStat("MAG40") then
+				val["value"] = "reload_40_grip"
+			elseif wep:GetStat("MAG60") then
+				val["value"] = "reload_60_grip"
+				else
+				val["value"] = "reload_grip"
+			end
+			return val, true, true
+		end,
+		["reload_empty"] = function(wep,val)
+			val = table.Copy(val)
+			val["type"] = TFA.Enum.ANIMATION_SEQ --Sequence or act
+			-- ext mags
+			if wep:GetStat("MAG30") then
+				val["value"] = "reload_empty_30_grip"
+			elseif wep:GetStat("MAG40") then
+				val["value"] = "reload_empty_40_grip"
+			elseif wep:GetStat("MAG60") then
+				val["value"] = "reload_empty_60_grip"
+				else
+				val["value"] = "reload_empty_grip"
+			end
+			return val, true, true
+		end,
 		["inspect"] = {
 			["type"] = TFA.Enum.ANIMATION_SEQ, --Sequence or act
 			["value"] = "inspect_grip"
@@ -96,7 +123,16 @@ ATTACHMENT.WeaponTable = {
 			["value"] = "fire_iron_grip",
 		},
     },
+	["Primary"] = {
+		["KickUp"] = function(wep,stat) return stat * 0.4 end,
+		["KickDown"] = function(wep,stat) return stat * 0.4 end,
+		["KickHorizontal"] = function(wep,stat) return stat * 0.8 end,
+	},
+	["HoldType"] = function(wep,stat)
+		return "smg", true
+	end,
 }
+
 
 
 function ATTACHMENT:Attach( wep )

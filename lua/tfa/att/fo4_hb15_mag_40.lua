@@ -10,6 +10,9 @@ ATTACHMENT.Icon = "entities/fo4_hb_mag40.png" --Revers to label, please give it 
 ATTACHMENT.ShortName = "MAG+"
 
 ATTACHMENT.WeaponTable = {
+
+["MAG40"] = true,
+
         ["Bodygroups_V"] = {
 		[4] =  5
     },
@@ -17,27 +20,15 @@ ATTACHMENT.WeaponTable = {
 		[3] =  5
     },
 	["Animations"] = {
-		["reload"] = function(wep, _val)
-			local val = table.Copy(_val)
-			if val.type == TFA.Enum.ANIMATION_SEQ then
-				val.value = val.value .. "_40"
-			else
-				val.type = TFA.Enum.ANIMATION_SEQ --Sequence or act
-				val.value = "reload_40"
-			end
-			return (wep:CheckVMSequence(val.value) and val or _val), true, true
-		end,
-		["reload_empty"] = function(wep, _val)
-			local val = table.Copy(_val)
-			if val.type == TFA.Enum.ANIMATION_SEQ then
-				val.value = val.value .. "_40"
-			else
-				val.type = TFA.Enum.ANIMATION_SEQ --Sequence or act
-				val.value = "reload_empty_40"
-			end
-			return (wep:CheckVMSequence(val.value) and val or _val), true, true
-		end,
-	},
+		["reload"] = {
+			["type"] = TFA.Enum.ANIMATION_SEQ, --Sequence or act
+			["value"] = "reload_40"
+		},
+		["reload_empty"] = {
+			["type"] = TFA.Enum.ANIMATION_SEQ, --Sequence or act
+			["value"] = "reload_empty_40"
+		},
+    },
 	["Primary"] = {
 		["ClipSize"] = function(wep, val)
 			return wep.Primary.ClipSize_ExtPistol or 40

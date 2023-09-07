@@ -59,13 +59,13 @@ SWEP.Primary.AmmoConsumption = 1 --Ammo consumed per shot
 --Pistol, buckshot, and slam like to ricochet. Use AirboatGun for a light metal peircing shotgun pellets
 SWEP.DisableChambering = false --Disable round-in-the-chamber
 --Recoil Related
-SWEP.Primary.KickUp = 0.4 -- This is the maximum upwards recoil (rise)
-SWEP.Primary.KickDown = 0.3 -- This is the maximum downwards recoil (skeet)
-SWEP.Primary.KickHorizontal = 0.2 -- This is the maximum sideways recoil (no real term)
-SWEP.Primary.StaticRecoilFactor = 0.1 --Amount of recoil to directly apply to EyeAngles.  Enter what fraction or percentage (in decimal form) you want.  This is also affected by a convar that defaults to 0.5.
+SWEP.Primary.KickUp = 0.24 -- This is the maximum upwards recoil (rise)
+SWEP.Primary.KickDown = 0.1 -- This is the maximum downwards recoil (skeet)
+SWEP.Primary.KickHorizontal = 0.08 -- This is the maximum sideways recoil (no real term)
+SWEP.Primary.StaticRecoilFactor = 0.4 --Amount of recoil to directly apply to EyeAngles.  Enter what fraction or percentage (in decimal form) you want.  This is also affected by a convar that defaults to 0.5.
 --Firing Cone Related
-SWEP.Primary.Spread = .01 --This is hip-fire acuracy.  Less is more (1 is horribly awful, .0001 is close to perfect)
-SWEP.Primary.IronAccuracy = .005 -- Ironsight accuracy, should be the same for shotguns
+SWEP.Primary.Spread = .025 --This is hip-fire acuracy.  Less is more (1 is horribly awful, .0001 is close to perfect)
+SWEP.Primary.IronAccuracy = .01 -- Ironsight accuracy, should be the same for shotguns
 --Unless you can do this manually, autodetect it.  If you decide to manually do these, uncomment this block and remove this line.
 SWEP.Primary.SpreadMultiplierMax = 3 --How far the spread can expand when you shoot. Example val: 2.5
 SWEP.Primary.SpreadIncrement = 1 --What percentage of the modifier is added on, per shot.  Example val: 1/3.5
@@ -802,6 +802,98 @@ SWEP.EventTable = {
 		{time = 0.5833333730697632, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagGrab")},
 		{time = 0.7333333373069763, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerStockFold")},
 		{time = 1.2166666984558105, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerEndReload")}
+	},
+	["reload_30_grip"] = {
+		{time = 0, type = "lua", value = function(wep, vm) wep:Mag_Full() end},
+		{time = 0, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2StartReload")},
+		{time = 0.2666666805744171, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagOut")},
+		{time = 0.3666666805744171, type = "lua", value = function(wep, vm) wep:TFAMagDrop() end},
+		{time = 0.28333333134651184, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagGrab")},
+		{time = 0.9333333373069763, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2Adjust")},
+		{time = 0.9833333492279053, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagTouch")},
+		{time = 1.2000000476837158, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagPush")},
+		{time = 1.4500000476837158, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagLock")},
+		{time = 1.6333333253860474, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndGrab")},
+		{time = 1.8833333253860474, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerEndReload")},
+		{time = 2.116666793823242, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndShoulder")},
+		
+	},
+	["reload_empty_30_grip"] = {
+		{time = 0, type = "lua", value = function(wep, vm) wep:Mag_Empty() end},
+		{time = 0, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2StartReload")},
+		{time = 0.20000000298023224, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagOut")},
+		{time = 0.30000000298023224, type = "lua", value = function(wep, vm) wep:TFAMagDrop() end},
+		{time = 0.5666666626930237, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagGrab")},
+		{time = 1.0333333015441895, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagTouch")},
+		{time = 1.3333333730697632, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagPush")},
+		{time = 1.5666667222976685, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagLock")},
+		{time = 2.066666603088379, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerHitSlap")},
+		{time = 2.1000001430511475, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerBoltSlap")},
+		{time = 2.4000000953674316, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndGrab")},
+		{time = 2.7333333492279053, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndShoulder")},
+	},
+	["reload_40_grip"] = {
+		{time = 0, type = "lua", value = function(wep, vm) wep:Mag_Full() end},
+		{time = 0, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2StartReload")},
+		{time = 0.20000000298023224, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagRelease40")},
+		{time = 0.30000001192092896, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagOut40")},
+		{time = 0.40000001192092896, type = "lua", value = function(wep, vm) wep:TFAMagDrop() end},
+		{time = 0.9333333373069763, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2Adjust")},
+		{time = 0.9500000476837158, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagTouch40")},
+		{time = 1.5166666507720947, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagInserting40")},
+		{time = 1.6333333253860474, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndGrab")},
+		{time = 1.8333333730697632, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagIn40")},
+		{time = 2.066666603088379, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerEndReload")},
+		{time = 2.25, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndShoulder")},
+		
+	},
+	["reload_empty_40_grip"] = {
+		{time = 0, type = "lua", value = function(wep, vm) wep:Mag_Empty() end},
+		{time = 0, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2StartReload")},
+		{time = 0.20000000298023224, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagOut")},
+		{time = 0.30000000298023224, type = "lua", value = function(wep, vm) wep:TFAMagDrop() end},
+		{time = 0.6333333253860474, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagGrab")},
+		{time = 1.0666667222976685, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagTouch")},
+		{time = 1.3666666746139526, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2Adjust")},
+		{time = 1.5666667222976685, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagOut")},
+		{time = 1.7333333492279053, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagPush")},
+		{time = 2.0, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagLock")},
+		{time = 2.566666841506958, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerHitSlap")},
+		{time = 2.6000001430511475, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerBoltSlap")},
+		{time = 2.9000000953674316, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndGrab")},
+		{time = 3.2333333492279053, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndShoulder")},
+	},
+	["reload_60_grip"] = {
+		{time = 0, type = "lua", value = function(wep, vm) wep:Mag_Full() end},
+		{time = 0, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2StartReload")},
+		{time = 0.18333333730697632, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagRelease60P")},
+		{time = 0.30000001192092896, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagOut60P")},
+		{time = 0.40000001192092896, type = "lua", value = function(wep, vm) wep:TFAMagDrop() end},
+		{time = 0.6000000238418579, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagGrab")},
+		{time = 1.0333333015441895, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagTouch60P")},
+		{time = 1.3666666746139526, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2Adjust")},
+		{time = 1.4666666984558105, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagInserting60P")},
+		{time = 1.6333333253860474, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2Adjust")},
+		{time = 2.0, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerMagIn60P")},
+		{time = 2.4000000953674316, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndGrab")},
+		{time = 2.633333444595337, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndShoulder")},
+		
+	},
+	["reload_empty_60_grip"] = {
+		{time = 0, type = "lua", value = function(wep, vm) wep:Mag_Empty() end},
+		{time = 0, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2StartReload")},
+		{time = 0.20000000298023224, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagOut")},
+		{time = 0.30000001192092896, type = "lua", value = function(wep, vm) wep:TFAMagDrop() end},
+		{time = 0.6333333253860474, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagGrab")},
+		{time = 1.0666667222976685, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagTouch")},
+		{time = 1.3666666746139526, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2Adjust")},
+		{time = 1.5666667222976685, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagOut")},
+		{time = 1.7333333492279053, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagPush")},
+		{time = 2.0, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2MagLock")},
+		{time = 2.566666841506958, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerHitSlap")},
+		{time = 2.6000001430511475, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadgerBoltSlap")},
+		{time = 2.9000000953674316, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndGrab")},
+		{time = 3.2333333492279053, type = "sound", value = Sound("TFA_FO4_HB_V1.5.WPNHoneyBadger2EndShoulder")},
 	},
 }
 
